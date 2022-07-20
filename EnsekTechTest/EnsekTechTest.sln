@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterReadApi.Tests", "Meter
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MetersDatabase", "MetersDatabase\MetersDatabase.sqlproj", "{C37E15AE-C740-4196-B6CE-E1AAF3BABF32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterReadService", "MeterReadService\MeterReadService.csproj", "{2CB557BD-64B0-4C7F-8A33-736129D5895D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{C37E15AE-C740-4196-B6CE-E1AAF3BABF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C37E15AE-C740-4196-B6CE-E1AAF3BABF32}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C37E15AE-C740-4196-B6CE-E1AAF3BABF32}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2CB557BD-64B0-4C7F-8A33-736129D5895D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CB557BD-64B0-4C7F-8A33-736129D5895D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CB557BD-64B0-4C7F-8A33-736129D5895D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CB557BD-64B0-4C7F-8A33-736129D5895D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
