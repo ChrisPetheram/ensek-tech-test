@@ -10,8 +10,9 @@ namespace MeterReadApi.Api
     {
         [HttpPost]
         [Route("meter-reading-uploads")]
-        public void MeterReadingUploads([FromBody] string value)
+        public HttpResponseMessage MeterReadingUploads()
         {
+            throw new NotImplementedException();
         }
     }
 }
