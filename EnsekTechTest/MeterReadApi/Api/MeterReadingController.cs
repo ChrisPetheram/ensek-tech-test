@@ -9,6 +9,7 @@ namespace MeterReadApi.Api
     public class MeterReadingController : ControllerBase
     {
         [HttpPost]
+        [Route("meter-reading-uploads")]
         public void MeterReadingUploads([FromBody] string value)
         {
         }
