@@ -19,7 +19,7 @@ namespace MeterReadApi.Api
 
         [HttpPost]
         [Route("meter-reading-uploads")]
-        public HttpResponseMessage MeterReadingUploads()
+        public async Task<HttpResponseMessage> MeterReadingUploads()
         {
             try
             {
