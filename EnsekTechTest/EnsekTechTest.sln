@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterReadApi", "MeterReadApi\MeterReadApi.csproj", "{E6184E80-23A0-430F-B0C4-C8D5D14B77BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeterReadApi", "MeterReadApi\MeterReadApi.csproj", "{E6184E80-23A0-430F-B0C4-C8D5D14B77BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterReadApi.Tests", "MeterReadApi.Tests\MeterReadApi.Tests.csproj", "{DC4E03D4-F270-4016-89F1-C4723CEE2E8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeterReadApi.Tests", "MeterReadApi.Tests\MeterReadApi.Tests.csproj", "{DC4E03D4-F270-4016-89F1-C4723CEE2E8B}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MetersDatabase", "MetersDatabase\MetersDatabase.sqlproj", "{C37E15AE-C740-4196-B6CE-E1AAF3BABF32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterReadService", "MeterReadService\MeterReadService.csproj", "{2CB557BD-64B0-4C7F-8A33-736129D5895D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeterReadService", "MeterReadService\MeterReadService.csproj", "{2CB557BD-64B0-4C7F-8A33-736129D5895D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterReadService.Tests", "MeterReadService.Tests\MeterReadService.Tests.csproj", "{81793679-7B5F-4D8D-8CFB-CA31921660B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{2CB557BD-64B0-4C7F-8A33-736129D5895D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CB557BD-64B0-4C7F-8A33-736129D5895D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CB557BD-64B0-4C7F-8A33-736129D5895D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81793679-7B5F-4D8D-8CFB-CA31921660B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81793679-7B5F-4D8D-8CFB-CA31921660B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81793679-7B5F-4D8D-8CFB-CA31921660B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81793679-7B5F-4D8D-8CFB-CA31921660B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
