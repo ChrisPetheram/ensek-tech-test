@@ -33,9 +33,13 @@ namespace MeterReadApi.Api
                 };
 
             }
-            catch
+            catch (InvalidOperationException)
             {
                 return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            }
+            catch (Exception)
+            {
+                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
             }
         }
     }
