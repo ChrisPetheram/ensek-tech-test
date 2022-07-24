@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MeterReadService.Models
+﻿namespace MeterReadService.Models
 {
     public enum MeterReadUploadState
     {
         UploadSuccessful,
+        CouldNotUpload,
         AlreadyUploaded,
         CouldNotParse
     }

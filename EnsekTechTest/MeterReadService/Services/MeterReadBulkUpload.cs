@@ -27,8 +27,10 @@ namespace MeterReadService.Services
                 MeterReadUploadState state = MeterReadUploadState.AlreadyUploaded;
                 if (ShouldUploadRow(row.item))
                 {
-                    _repository.InsertReading(row.item);
-                    state = MeterReadUploadState.UploadSuccessful;
+                    var success = _repository.InsertReading(row.item);
+                    state = success
+                        ? MeterReadUploadState.UploadSuccessful
+                        : MeterReadUploadState.CouldNotUpload;
                 }
 
                 responses.Add(new MeterReadUploadResponse
@@ -52,7 +54,8 @@ namespace MeterReadService.Services
 
         private bool ShouldUploadRow(MeterReading row)
         {
-            throw new NotImplementedException();
+            var exists = _repository.EntryExists(row);
+            return !exists;
         }
     }
 }
