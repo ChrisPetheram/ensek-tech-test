@@ -18,7 +18,7 @@ namespace MeterReadApi.Api
 
         [HttpPost]
         [Route("~/meter-reading-uploads")]
-        public async Task<HttpResponseMessage> MeterReadingUploads()
+        public async Task<IActionResult> MeterReadingUploads()
         {
             try
             {
@@ -27,18 +27,15 @@ namespace MeterReadApi.Api
 
                 var results = _bulkUploadService.ParseFile(file.OpenReadStream());
 
-                return new HttpResponseMessage(HttpStatusCode.OK)
-                {
-                };
-
+                return Ok(results);
             }
             catch (InvalidOperationException)
             {
-                return new HttpResponseMessage(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
             catch (Exception)
             {
-                return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                return StatusCode(500);
             }
         }
     }

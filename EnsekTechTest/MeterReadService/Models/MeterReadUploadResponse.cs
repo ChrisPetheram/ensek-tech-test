@@ -10,5 +10,6 @@ namespace MeterReadService.Models
     {
         public string FileRow { get; init; }
         public MeterReadUploadState State { get; init; }
+        public string StateName => State.ToString();
     }
 }
