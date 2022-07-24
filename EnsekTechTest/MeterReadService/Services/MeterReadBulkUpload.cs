@@ -21,7 +21,35 @@ namespace MeterReadService.Services
             var responses = new List<MeterReadUploadResponse>();
 
             var (good, bad) = reader.GetRows(file);
+            PruneInvalidValues(good, bad);
 
+            responses.AddRange(InsertGoodRows(good));
+            responses.AddRange(HandleBadRows(bad));
+
+            return responses;
+        }
+
+        private bool ShouldUploadRow(MeterReading row)
+        {
+            var exists = _repository.EntryExists(row);
+            return !exists;
+        }
+
+        private void PruneInvalidValues(ICollection<(string row, MeterReading item)> successes, ICollection<string> failures)
+        {
+            for (int i = successes.Count - 1; i >= 0; i--)
+            {
+                if (!successes.ElementAt(i).item.IsValid())
+                {
+                    failures.Add(successes.ElementAt(i).row);
+                    successes.Remove(successes.ElementAt(i));
+                }
+            }
+        }
+
+        private ICollection<MeterReadUploadResponse> InsertGoodRows(ICollection<(string row, MeterReading item)> good)
+        {
+            var responses = new List<MeterReadUploadResponse>();
             foreach (var row in good)
             {
                 MeterReadUploadState state = MeterReadUploadState.AlreadyUploaded;
@@ -39,7 +67,12 @@ namespace MeterReadService.Services
                     State = state
                 });
             }
+            return responses;
+        }
 
+        private ICollection<MeterReadUploadResponse> HandleBadRows(ICollection<string> bad)
+        {
+            var responses = new List<MeterReadUploadResponse>();
             foreach (var row in bad)
             {
                 responses.Add(new MeterReadUploadResponse
@@ -48,14 +81,7 @@ namespace MeterReadService.Services
                     State = MeterReadUploadState.CouldNotParse
                 });
             }
-
             return responses;
-        }
-
-        private bool ShouldUploadRow(MeterReading row)
-        {
-            var exists = _repository.EntryExists(row);
-            return !exists;
         }
     }
 }
