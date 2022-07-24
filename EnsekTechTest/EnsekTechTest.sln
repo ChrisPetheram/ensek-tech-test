@@ -11,7 +11,11 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MetersDatabase", "MetersDat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeterReadService", "MeterReadService\MeterReadService.csproj", "{2CB557BD-64B0-4C7F-8A33-736129D5895D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterReadService.Tests", "MeterReadService.Tests\MeterReadService.Tests.csproj", "{81793679-7B5F-4D8D-8CFB-CA31921660B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeterReadService.Tests", "MeterReadService.Tests\MeterReadService.Tests.csproj", "{81793679-7B5F-4D8D-8CFB-CA31921660B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterReadDatabaseAccess", "MeterReadDatabaseAccess\MeterReadDatabaseAccess.csproj", "{6AE6026F-1BD6-4CE3-98CE-F423D9F1424A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterReadEntities", "MeterReadEntities\MeterReadEntities.csproj", "{C0140E6A-9D0E-44CB-8F13-6D1489C88CCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,14 @@ Global
 		{81793679-7B5F-4D8D-8CFB-CA31921660B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81793679-7B5F-4D8D-8CFB-CA31921660B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81793679-7B5F-4D8D-8CFB-CA31921660B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AE6026F-1BD6-4CE3-98CE-F423D9F1424A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE6026F-1BD6-4CE3-98CE-F423D9F1424A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE6026F-1BD6-4CE3-98CE-F423D9F1424A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE6026F-1BD6-4CE3-98CE-F423D9F1424A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0140E6A-9D0E-44CB-8F13-6D1489C88CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0140E6A-9D0E-44CB-8F13-6D1489C88CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0140E6A-9D0E-44CB-8F13-6D1489C88CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0140E6A-9D0E-44CB-8F13-6D1489C88CCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

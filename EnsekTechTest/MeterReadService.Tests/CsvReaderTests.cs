@@ -1,12 +1,6 @@
 ﻿using FluentAssertions;
-using MeterReadService.Abstractions;
-using MeterReadService.Models;
+using MeterReadEntities;
 using MeterReadService.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MeterReadService.Tests
 {
