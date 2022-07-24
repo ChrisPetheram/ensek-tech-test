@@ -11,7 +11,7 @@ namespace MeterReadService.Services
             _mapper = mapper;
         }
 
-        public (ICollection<(string row, T item)> successes, ICollection<string> failures) GetRows(Stream file)
+        public (ICollection<(string row, T item)> successes, ICollection<string> failures) GetRows(Stream file, bool hasHeaders = true)
         {
             if (file == null)
                 throw new ArgumentNullException(nameof(file));
@@ -26,6 +26,10 @@ namespace MeterReadService.Services
             file.Seek(0, SeekOrigin.Begin);
             using (var reader = new StreamReader(file))
             {
+                if (hasHeaders && reader.Peek() >= 0)
+                {
+                    _ = reader.ReadLine();
+                }
 
                 while (reader.Peek() >= 0)
                 {
