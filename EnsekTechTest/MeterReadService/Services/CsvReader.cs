@@ -9,7 +9,7 @@ namespace MeterReadService.Services
 {
     public class CsvReader<T>
     {
-        public ICollection<T> GetRows(ICsvMapper<T> csvMapper)
+        public (ICollection<T> successes, ICollection<string> failures) GetRows(Stream file, ICsvMapper<T> csvMapper)
         {
             throw new NotImplementedException();
         }
