@@ -1,5 +1,7 @@
 using FluentAssertions;
+using MeterReadDatabaseAccess;
 using MeterReadService.Services;
+using Moq;
 
 namespace MeterReadService.Tests
 {
@@ -11,7 +13,8 @@ namespace MeterReadService.Tests
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
-            _service = new MeterReadBulkUpload();
+            var repository = Mock.Of<MeterReadingRepository>();
+            _service = new MeterReadBulkUpload(repository);
         }
 
         [TestMethod]
