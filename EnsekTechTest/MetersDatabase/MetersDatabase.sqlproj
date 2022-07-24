@@ -58,11 +58,14 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="PostDeploy" />
+    <Folder Include="StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Account.sql" />
     <Build Include="Tables\MeterReading.sql" />
     <None Include="PostDeploy\SeedAccountData.sql" />
+    <Build Include="StoredProcedures\InsertMeterReading.sql" />
+    <Build Include="StoredProcedures\MeterReadingExists.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />
