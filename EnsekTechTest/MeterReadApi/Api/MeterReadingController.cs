@@ -6,7 +6,6 @@ using System.Net;
 
 namespace MeterReadApi.Api
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class MeterReadingController : ControllerBase
     {
@@ -18,7 +17,7 @@ namespace MeterReadApi.Api
         }
 
         [HttpPost]
-        [Route("meter-reading-uploads")]
+        [Route("~/meter-reading-uploads")]
         public async Task<HttpResponseMessage> MeterReadingUploads()
         {
             try
