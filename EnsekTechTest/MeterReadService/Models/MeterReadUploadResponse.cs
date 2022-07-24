@@ -8,7 +8,7 @@ namespace MeterReadService.Models
 {
     public class MeterReadUploadResponse
     {
-        string FileRow { get; init; }
-        MeterReadUploadState State { get; init; }
+        public string FileRow { get; init; }
+        public MeterReadUploadState State { get; init; }
     }
 }

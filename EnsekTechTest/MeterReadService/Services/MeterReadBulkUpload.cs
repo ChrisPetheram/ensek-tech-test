@@ -6,11 +6,11 @@ namespace MeterReadService.Services
 {
     public class MeterReadBulkUpload
     {
-        private MeterReadingRepository repository;
+        private MeterReadingRepository _repository;
 
-        public MeterReadBulkUpload()
+        public MeterReadBulkUpload(MeterReadingRepository repository)
         {
-            
+            _repository = repository;
         }
 
         public ICollection<MeterReadUploadResponse> ParseFile(Stream file)
@@ -24,14 +24,30 @@ namespace MeterReadService.Services
 
             foreach (var row in good)
             {
+                MeterReadUploadState state = MeterReadUploadState.AlreadyUploaded;
                 if (ShouldUploadRow(row.item))
                 {
-                    repository.InsertReading(row.item);
+                    _repository.InsertReading(row.item);
+                    state = MeterReadUploadState.UploadSuccessful;
                 }
+
+                responses.Add(new MeterReadUploadResponse
+                {
+                    FileRow = row.row,
+                    State = state
+                });
             }
 
+            foreach (var row in bad)
+            {
+                responses.Add(new MeterReadUploadResponse
+                {
+                    FileRow = row,
+                    State = MeterReadUploadState.CouldNotParse
+                });
+            }
 
-
+            return responses;
         }
 
         private bool ShouldUploadRow(MeterReading row)
