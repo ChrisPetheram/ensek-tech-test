@@ -1,24 +1,25 @@
 ﻿using MeterReadDatabaseAccess;
 using MeterReadEntities;
+using MeterReadService.Abstractions;
 using MeterReadService.Models;
 
 namespace MeterReadService.Services
 {
-    public class MeterReadBulkUpload
+    public class MeterReadBulkUpload : IBulkUpload
     {
-        private MeterReadingRepository _repository;
+        private IRepository<MeterReading> _repository;
 
-        public MeterReadBulkUpload(MeterReadingRepository repository)
+        public MeterReadBulkUpload(IRepository<MeterReading> repository)
         {
             _repository = repository;
         }
 
-        public ICollection<MeterReadUploadResponse> ParseFile(Stream file)
+        public ICollection<IUploadResponse> ParseFile(Stream file)
         {
             var mapper = new MeterReadingCsvMapper();
             var reader = new CsvReader<MeterReading>(mapper);
 
-            var responses = new List<MeterReadUploadResponse>();
+            var responses = new List<IUploadResponse>();
 
             var (good, bad) = reader.GetRows(file);
             PruneInvalidValues(good, bad);
@@ -31,7 +32,7 @@ namespace MeterReadService.Services
 
         private bool ShouldUploadRow(MeterReading row)
         {
-            var exists = _repository.EntryExists(row);
+            var exists = _repository.Exists(row);
             return !exists;
         }
 
@@ -55,7 +56,7 @@ namespace MeterReadService.Services
                 MeterReadUploadState state = MeterReadUploadState.AlreadyUploaded;
                 if (ShouldUploadRow(row.item))
                 {
-                    var success = _repository.InsertReading(row.item);
+                    var success = _repository.Insert(row.item);
                     state = success
                         ? MeterReadUploadState.UploadSuccessful
                         : MeterReadUploadState.CouldNotUpload;

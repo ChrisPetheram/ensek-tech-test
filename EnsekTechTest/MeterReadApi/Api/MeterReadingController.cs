@@ -1,4 +1,5 @@
-﻿using MeterReadService.Services;
+﻿using MeterReadService.Abstractions;
+using MeterReadService.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -9,9 +10,9 @@ namespace MeterReadApi.Api
     [ApiController]
     public class MeterReadingController : ControllerBase
     {
-        private MeterReadBulkUpload _bulkUploadService;
+        private IBulkUpload _bulkUploadService;
 
-        public MeterReadingController(MeterReadBulkUpload bulkUploadService)
+        public MeterReadingController(IBulkUpload bulkUploadService)
         {
             _bulkUploadService = bulkUploadService;
         }

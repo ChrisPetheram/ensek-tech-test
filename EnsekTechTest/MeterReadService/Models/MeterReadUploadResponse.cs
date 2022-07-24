@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MeterReadService.Abstractions;
 
 namespace MeterReadService.Models
 {
-    public class MeterReadUploadResponse
+    public class MeterReadUploadResponse : IUploadResponse
     {
         public string FileRow { get; init; }
         public MeterReadUploadState State { get; init; }

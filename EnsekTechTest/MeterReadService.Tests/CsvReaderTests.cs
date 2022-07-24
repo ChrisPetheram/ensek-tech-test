@@ -42,7 +42,7 @@ namespace MeterReadService.Tests
             };
             using (var stream = GetMockFileStream(input))
             {
-                var (good, bad) = _reader.GetRows(stream);
+                var (good, bad) = _reader.GetRows(stream, false);
 
                 bad.Should().BeEmpty();
                 good.Count.Should().Be(2);
@@ -64,7 +64,7 @@ namespace MeterReadService.Tests
             };
             using (var stream = GetMockFileStream(input))
             {
-                var (good, bad) = _reader.GetRows(stream);
+                var (good, bad) = _reader.GetRows(stream, false);
 
                 bad.Count.Should().Be(2);
                 bad.Should().BeEquivalentTo(input);
@@ -81,7 +81,7 @@ namespace MeterReadService.Tests
             };
             using (var stream = GetMockFileStream(input))
             {
-                var (good, bad) = _reader.GetRows(stream);
+                var (good, bad) = _reader.GetRows(stream, false);
 
                 bad.Count().Should().Be(1); 
                 good.Count.Should().Be(1);

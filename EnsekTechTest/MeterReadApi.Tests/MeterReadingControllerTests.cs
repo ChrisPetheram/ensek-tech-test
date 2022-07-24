@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using MeterReadApi.Api;
+using MeterReadService.Abstractions;
 using MeterReadService.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
@@ -22,7 +23,7 @@ namespace MeterReadApi.Tests
         [ClassInitialize]
         public static void ClassInitialize(TestContext testContext)
         {
-            var bulkUploadServiceMock = new Mock<MeterReadBulkUpload>();
+            var bulkUploadServiceMock = new Mock<IBulkUpload>();
             _controller = new MeterReadingController(bulkUploadServiceMock.Object);
             _controller.ControllerContext = new ControllerContext();
         }
@@ -34,7 +35,7 @@ namespace MeterReadApi.Tests
 
             var result = await _controller.MeterReadingUploads();
 
-            result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            GetHttpStatusCode(result).Should().Be(HttpStatusCode.BadRequest);
         }
 
         [TestMethod]
@@ -45,7 +46,7 @@ namespace MeterReadApi.Tests
 
             var result = await _controller.MeterReadingUploads();
 
-            result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            GetHttpStatusCode(result).Should().Be(HttpStatusCode.BadRequest);
         }
 
         [TestMethod]
@@ -58,7 +59,7 @@ namespace MeterReadApi.Tests
 
             var result = await _controller.MeterReadingUploads();
 
-            result.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            GetHttpStatusCode(result).Should().Be(HttpStatusCode.BadRequest);
         }
 
         private FormFile CreateFile(string fileContents)
@@ -77,6 +78,21 @@ namespace MeterReadApi.Tests
             context.Request.Form = new FormCollection(null, files);
 
             return context;
+        }
+
+        public static HttpStatusCode GetHttpStatusCode(IActionResult functionResult)
+        {
+            try
+            {
+                return (HttpStatusCode)functionResult
+                    .GetType()
+                    .GetProperty("StatusCode")
+                    .GetValue(functionResult, null);
+            }
+            catch
+            {
+                return HttpStatusCode.InternalServerError;
+            }
         }
 
     }

@@ -4,7 +4,7 @@ using System.Data;
 
 namespace MeterReadDatabaseAccess
 {
-    public class MeterReadingRepository
+    public class MeterReadingRepository : IRepository<MeterReading>
     {
         private IDbConnector _connector;
 
@@ -13,7 +13,7 @@ namespace MeterReadDatabaseAccess
             _connector = connector;
         }
 
-        public bool InsertReading(MeterReading reading)
+        public bool Insert(MeterReading reading)
         {
             using (var connection = _connector.GetConnection())
             {
@@ -39,7 +39,7 @@ namespace MeterReadDatabaseAccess
             }
         }
 
-        public bool EntryExists(MeterReading reading)
+        public bool Exists(MeterReading reading)
         {
             using (var connection = _connector.GetConnection())
             {
