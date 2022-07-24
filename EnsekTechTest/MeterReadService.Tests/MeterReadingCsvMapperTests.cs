@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using MeterReadService.Models;
 using MeterReadService.Services;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,14 @@ namespace MeterReadService.Tests
         [TestMethod]
         public void ValidValues_Returns_MeterReading()
         {
-            Assert.Fail();
+            var input = new List<string> { "1234", "01/01/2022 10:15", "23456" };
+
+            var result = _mapper.ColumnMapping(input);
+
+            result.Should().BeOfType<MeterReading>();
+            result.AccountId.Should().Be(1234);
+            result.ReadingTime.Should().Be(new DateTime(2022, 01, 01, 10, 15, 0));
+            result.ReadingValue.Should().Be(23456);
         }
     }
 }
