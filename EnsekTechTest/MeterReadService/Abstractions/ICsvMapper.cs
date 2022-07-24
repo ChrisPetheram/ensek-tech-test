@@ -8,6 +8,6 @@ namespace MeterReadService.Abstractions
 {
     public interface ICsvMapper<T>
     {
-        List<Action<string, T>> ColumnMap { get; }
+        Func<ICollection<string>, T> ColumnMapping { get; }
     }
 }
