@@ -49,7 +49,7 @@ namespace MeterReadService.Tests
 
                 for (int i = 0; i < 2; i++)
                 {
-                    Assert.AreEqual(input.ElementAt(i), ReconstructString(good.ElementAt(i)));
+                    Assert.AreEqual(input.ElementAt(i), ReconstructString(good.ElementAt(i).item));
                 }
             }
         }
@@ -87,7 +87,7 @@ namespace MeterReadService.Tests
                 good.Count.Should().Be(1);
 
                 bad.First().Should().Be(input.ElementAt(0));
-                ReconstructString(good.First()).Should().Be(input.ElementAt(1));
+                ReconstructString(good.First().item).Should().Be(input.ElementAt(1));
             }
         }
 

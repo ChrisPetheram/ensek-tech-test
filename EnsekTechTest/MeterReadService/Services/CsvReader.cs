@@ -11,7 +11,7 @@ namespace MeterReadService.Services
             _mapper = mapper;
         }
 
-        public (ICollection<T> successes, ICollection<string> failures) GetRows(Stream file)
+        public (ICollection<(string row, T item)> successes, ICollection<string> failures) GetRows(Stream file)
         {
             if (file == null)
                 throw new ArgumentNullException(nameof(file));
@@ -19,7 +19,7 @@ namespace MeterReadService.Services
             if (_mapper == null)
                 throw new ArgumentNullException(nameof(_mapper));
 
-            var successes = new List<T>();
+            var successes = new List<(string, T)>();
             var failures = new List<string>();
             string currentLine = null;
 
@@ -34,7 +34,7 @@ namespace MeterReadService.Services
                         currentLine = reader.ReadLine();
                         var values = currentLine?.Split(",", StringSplitOptions.TrimEntries);
 
-                        successes.Add(_mapper.ColumnMapping(values!));
+                        successes.Add((currentLine!, _mapper.ColumnMapping(values!)));
 
                     }
                     catch (FormatException fEx)

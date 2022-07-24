@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace MeterReadService.Models
 {
-    public class MeterReadUploadResponse
+    public enum MeterReadUploadState
     {
-        string FileRow { get; init; }
-        MeterReadUploadState State { get; init; }
+        UploadSuccessful,
+        AlreadyUploaded,
+        CouldNotParse
     }
 }
