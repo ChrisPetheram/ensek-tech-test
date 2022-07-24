@@ -28,9 +28,9 @@ namespace MeterReadService.Services
             var failures = new List<string>();
             string currentLine = null;
 
+            file.Seek(0, SeekOrigin.Begin);
             using (var reader = new StreamReader(file))
             {
-                file.Seek(0, SeekOrigin.Begin);
 
                 while (reader.Peek() >= 0)
                 {
