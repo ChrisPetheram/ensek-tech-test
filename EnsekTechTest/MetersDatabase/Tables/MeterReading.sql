@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[MeterReading]
 (
-	[Id] INT NOT NULL PRIMARY KEY,
+	[Id] INT NOT NULL IDENTITY PRIMARY KEY,
 	[AccountId] INT NOT NULL,
 	[MeterReadingDateTime] DATETIME2,
 	[MeterReadValue] INT,
